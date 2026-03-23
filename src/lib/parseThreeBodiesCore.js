@@ -21,6 +21,18 @@ function normalizeWhitespace(value) {
 }
 
 /**
+ * @param {number} chapterNumber
+ * @param {string} title
+ * @returns {string}
+ */
+function formatChapterLabel(chapterNumber, title) {
+  const divider = '의 말씀 안에 나타난 ';
+  if (!title.includes(divider)) return `${chapterNumber}. ${title}`;
+  const [subject, rest] = title.split(divider);
+  return `${chapterNumber}. ${subject}${divider.trimEnd()}\n${rest}`;
+}
+
+/**
  * @param {string} source
  * @returns {string[]}
  */
@@ -188,10 +200,10 @@ export function createBookGroup(chapters) {
     isGroup: true,
     subchapters: chapters.map((chapter) => ({
       id: String(chapter.chapterNumber),
-      chapterName: `${chapter.chapterNumber}. ${chapter.koreanTitle}`,
+      chapterName: formatChapterLabel(chapter.chapterNumber, chapter.koreanTitle),
       title: chapter.koreanTitle,
       tocHeadings: [],
-      tocActionLabel: `${chapter.chapterNumber}. ${chapter.koreanTitle}`,
+      tocActionLabel: formatChapterLabel(chapter.chapterNumber, chapter.koreanTitle),
       paragraphs: chapter.paragraphs.map((paragraph) => ({
         id: `book.${chapter.chapterNumber}.${paragraph.number}`,
         title: `\uBB38\uB2E8 ${paragraph.number}`,

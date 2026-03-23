@@ -103,7 +103,7 @@ const LeftSidebar = ({ chapters, onSelectParagraph, activeParagraphId, isPrayerP
       isDesktopOpen={isDesktopSidebarOpen}
       onClose={() => setIsSidebarOpen(false)}
       position="left"
-      widthClass="w-80"
+      widthClass="w-[22rem]"
       className="dark:bg-dark-bg/95"
     >
       <SidebarHeader setIsSidebarOpen={setIsSidebarOpen} />
