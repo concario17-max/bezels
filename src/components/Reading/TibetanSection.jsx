@@ -10,37 +10,28 @@ function TibetanSection({ tibetan, pronunciation }) {
   if (!tibetan && !pronunciation) return null;
 
   return (
-    <>
-      <section
-        id="primary-translation"
-        className="relative mb-8 mt-6 overflow-hidden rounded-[2rem] border border-gold-border/20 bg-white/55 px-5 py-8 text-center shadow-[0_25px_60px_rgba(120,93,48,0.08)] backdrop-blur-xl dark:border-dark-border/60 dark:bg-dark-surface/45 sm:px-10 sm:py-12"
-      >
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-gold-surface/25 to-transparent dark:from-gold-primary/10" />
-        <div className="relative mx-auto max-w-4xl">
-          <p className="font-inter text-[10px] font-semibold uppercase tracking-[0.42em] text-gold-deep/70 dark:text-gold-light/70">
-            Dagli Translation
+    <section className="mb-10 space-y-8 sm:space-y-10">
+      <div className="rounded-[1.8rem] border border-gold-border/18 bg-white/55 px-5 py-6 shadow-[0_20px_50px_rgba(120,93,48,0.05)] backdrop-blur-lg dark:border-dark-border/55 dark:bg-dark-surface/35 sm:px-8 sm:py-8">
+        <div className="space-y-2">
+          <p className="font-inter text-[12px] font-semibold tracking-[0.01em] text-gold-deep/82 dark:text-gold-light/78">
+            The Ringstones of Wisdom (Fusus al-Hikam)
           </p>
-
-          {pronunciation ? (
-            <p className="mt-4 font-inter text-[11px] uppercase tracking-[0.18em] text-gold-muted dark:text-gold-light/75">
-              {pronunciation}
-            </p>
-          ) : null}
-
-          {tibetan ? (
-            <p className="mx-auto mt-5 max-w-[92%] text-left font-korean text-[1rem] leading-[1.95] tracking-[-0.01em] text-[#4A0404] antialiased drop-shadow-[0_1px_1px_rgba(0,0,0,0.05)] dark:text-[#F0D8BF] sm:text-[1.18rem] sm:leading-[2]">
-              {tibetan.replace(/[\r\n]+/g, ' ')}
-            </p>
-          ) : null}
+          <p className="font-inter text-[11px] font-semibold tracking-[0.16em] text-gold-muted dark:text-gold-light/70">
+            Caner Dagli Translation
+          </p>
         </div>
-      </section>
 
-      <div className="mx-auto my-8 flex w-full max-w-md items-center gap-4">
-        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold-border/40 to-transparent" />
-        <span className="font-serif text-sm text-gold-primary/60 dark:text-gold-light/60">III</span>
-        <div className="h-px flex-1 bg-gradient-to-r from-transparent via-gold-border/40 to-transparent" />
+        {tibetan ? (
+          <div className="mx-auto mt-4 max-w-4xl space-y-5">
+            <div className="rounded-[1.25rem] border border-gold-border/12 bg-white/55 px-4 py-4 dark:border-dark-border/45 dark:bg-dark-bg/25">
+              <p className="mt-0 whitespace-pre-line text-left font-korean text-[17px] leading-[1.9] tracking-[-0.01em] text-text-primary/92 dark:text-dark-text-primary/92 sm:text-[19px] sm:leading-[1.95]">
+                {tibetan.replace(/[\r\n]+/g, ' ')}
+              </p>
+            </div>
+          </div>
+        ) : null}
       </div>
-    </>
+    </section>
   );
 }
 

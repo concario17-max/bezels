@@ -80,8 +80,7 @@ function ReadingPanel({ verse, globalIndex, onPrevious, onNext }) {
 
         <motion.div variants={itemVariants}>
           <NavigationPill
-            globalIndex={globalIndex}
-            verseId={verseId}
+            paragraphNumber={safeVerse?.paragraphNumber}
             onPrevious={onPrevious}
             onNext={onNext}
           />
