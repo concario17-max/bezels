@@ -51,6 +51,20 @@ async function runParserTests() {
   assert.equal(chapterEntries[0].paragraphs[0].number, 1);
   assert.equal(chapterEntries[0].paragraphs[0].dagli.startsWith('The Real willed'), true);
   assert.equal(chapterEntries[0].paragraphs[0].austin.startsWith('The Reality wanted'), true);
+  assert.equal(chapterEntries[5].englishTitle, 'THE WISDOM OF REALITY IN THE WORD OF ISAAC.');
+  assert.equal(chapterEntries[5].paragraphs.length, 17);
+  assert.equal(chapterEntries[5].paragraphs[0].dagli.startsWith('By an animal’s offering as sacrifice'), true);
+  assert.equal(chapterEntries[5].paragraphs[0].austin.startsWith('The ransom of a prophet is a beast slaughtered'), true);
+  assert.equal(chapterEntries[13].englishTitle, 'THE WISDOM OF DESTINY IN THE WORD OF EZRA');
+  assert.equal(chapterEntries[13].paragraphs.length, 9);
+  assert.equal(chapterEntries[13].paragraphs[0].dagli.startsWith('Know that the decree is God’s determination'), true);
+  assert.equal(chapterEntries[13].paragraphs[0].austin.startsWith('Know that the Decree [qaqii] is God'), true);
+  assert.equal(chapterEntries[16].englishTitle, 'THE WISDOM OF BEING IN THE WORD OF DAVID');
+  assert.equal(chapterEntries[16].paragraphs.length > 0, true);
+  assert.equal(chapterEntries[17].englishTitle, 'THE WISDOM OF BREATH IN THE WORD OF JONAH');
+  assert.equal(chapterEntries[17].paragraphs.length > 0, true);
+  assert.equal(chapterEntries[18].englishTitle, 'THE WISDOM OF THE UNSEEN IN THE WORD OF JOB');
+  assert.equal(chapterEntries[18].paragraphs.length > 0, true);
   assert.equal(chapterEntries[19].englishTitle, 'THE WISDOM OF MAJESTY IN THE WORD OF JOHN');
   assert.equal(chapterEntries[19].paragraphs.length, 2);
   assert.equal(chapterEntries[19].paragraphs[0].dagli.startsWith('This is the Wisdom of firstness'), true);
@@ -63,6 +77,7 @@ async function runParserTests() {
   assert.equal(bookGroup.title, COLLECTION_TITLE);
   assert.equal(bookGroup.isGroup, true);
   assert.equal(bookGroup.subchapters?.length, 27);
+  assert.equal(bookGroup.subchapters?.every((subchapter) => (subchapter.paragraphs?.length ?? 0) > 0), true);
   assert.deepEqual(bookGroup.subchapters?.[0]?.tocHeadings, []);
   assert.equal(bookGroup.subchapters?.[0]?.paragraphs?.[0]?.title, '문단 1');
   assert.equal(bookGroup.subchapters?.[0]?.paragraphs?.[0]?.text.english.startsWith('Austin\n'), true);

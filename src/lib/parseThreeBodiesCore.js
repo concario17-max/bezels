@@ -49,16 +49,16 @@ function parseParagraphBlock(blockLines) {
     const line = rawLine.trim();
     if (!line) continue;
 
-    if (line.startsWith('* Dagli:')) {
+    if (/^\*?\s*Dagli(?:\s*[:：].*)?$/i.test(line)) {
       mode = 'dagli';
-      const remainder = line.replace(/^\*\s*Dagli:\s*/, '');
+      const remainder = line.replace(/^\*?\s*Dagli\s*[:：]?\s*/i, '');
       if (remainder) dagliLines.push(remainder);
       continue;
     }
 
-    if (line.startsWith('* Austin:')) {
+    if (/^\*?\s*Austin(?:\s*[:：].*)?$/i.test(line)) {
       mode = 'austin';
-      const remainder = line.replace(/^\*\s*Austin:\s*/, '');
+      const remainder = line.replace(/^\*?\s*Austin\s*[:：]?\s*/i, '');
       if (remainder) austinLines.push(remainder);
       continue;
     }
@@ -157,10 +157,12 @@ export function parseChapterEntries(source, tocEntries) {
       continue;
     }
 
-    const paragraphMatch = line.match(/^\[\uBB38\uB2E8\s+(\d+)\]$/);
+    const paragraphMatch = line.match(
+      /^(?:\[\s*(?:\uBB38\uB2E8|제)\s*(\d+)\s*(?:\uB2E8\uB77D|\uBB38\uB2E8)?\s*\]|제\s*(\d+)\s*\uBB38\uB2E8)(?:\s+.*)?$/,
+    );
     if (paragraphMatch) {
       flushParagraph();
-      currentParagraphNumber = Number(paragraphMatch[1]);
+      currentParagraphNumber = Number(paragraphMatch[1] ?? paragraphMatch[2]);
       continue;
     }
 
