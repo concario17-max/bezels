@@ -55,7 +55,7 @@ async function runParserTests() {
   assert.equal(bookGroup.title, COLLECTION_TITLE);
   assert.equal(bookGroup.isGroup, true);
   assert.equal(bookGroup.subchapters?.length, 27);
-  assert.deepEqual(bookGroup.subchapters?.[0]?.tocHeadings, ['THE WISDOM OF DIVINITY IN THE WORD OF ADAM']);
+  assert.deepEqual(bookGroup.subchapters?.[0]?.tocHeadings, []);
   assert.equal(bookGroup.subchapters?.[0]?.paragraphs?.[0]?.title, '문단 1');
   assert.equal(bookGroup.subchapters?.[0]?.paragraphs?.[0]?.text.english.startsWith('Austin\n'), true);
   assert.equal(flatParagraphs[0]?.id, 'book.1.1');

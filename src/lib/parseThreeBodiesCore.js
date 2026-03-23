@@ -156,11 +156,10 @@ export function createBookGroup(chapters) {
     isGroup: true,
     subchapters: chapters.map((chapter) => ({
       id: String(chapter.chapterNumber),
-      chapterName: chapter.koreanTitle,
+      chapterName: `${chapter.chapterNumber}. ${chapter.koreanTitle}`,
       title: chapter.koreanTitle,
-      tocHeadings:
-        chapter.englishTitle === 'THE WISDOM OF SUBLIMITY IN THE WORD OF ISHMAEL' ? [] : [chapter.englishTitle],
-      tocActionLabel: chapter.koreanTitle,
+      tocHeadings: [],
+      tocActionLabel: `${chapter.chapterNumber}. ${chapter.koreanTitle}`,
       paragraphs: chapter.paragraphs.map((paragraph) => ({
         id: `book.${chapter.chapterNumber}.${paragraph.number}`,
         title: `\uBB38\uB2E8 ${paragraph.number}`,

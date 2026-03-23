@@ -1,11 +1,41 @@
 import React from 'react';
-import { BookOpenText, Menu, MessageSquareText, MoonStar, SunMedium } from 'lucide-react';
+import { Menu, MessageSquareText, MoonStar, SunMedium } from 'lucide-react';
 import { useUI } from '../context/UIContext';
 import { DESKTOP_FRAME_COLUMNS_DEFAULT } from './ui/desktopFrame';
 
 /** @typedef {import('../types').UIContextValue} UIContextValue */
 
 const TITLE_TEXT = '\uC774\uBE10 \uC54C \uC544\uB77C\uBE44';
+
+function BrandMark() {
+  return (
+    <svg viewBox="0 0 64 64" className="h-5 w-5" aria-hidden="true">
+      <defs>
+        <linearGradient id="brand-gold" x1="8%" y1="8%" x2="92%" y2="92%">
+          <stop offset="0%" stopColor="#E7D8B1" />
+          <stop offset="52%" stopColor="#B7924B" />
+          <stop offset="100%" stopColor="#7F5E2D" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M32 8.5 48 16.8v15c0 10.8-6.2 18.8-16 23.2-9.8-4.4-16-12.4-16-23.2v-15Z"
+        fill="none"
+        stroke="url(#brand-gold)"
+        strokeWidth="3"
+        strokeLinejoin="round"
+      />
+      <path d="M26 24h4.4v15.2H26Zm7.6 0H38v15.2h-4.4Z" fill="url(#brand-gold)" />
+      <path
+        d="M22.8 43.2c4-2 6.9-5.5 9.2-10.5 2.3 5 5.2 8.5 9.2 10.5"
+        fill="none"
+        stroke="#D8BF85"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <circle cx="32" cy="20.2" r="1.8" fill="#F0E1BB" />
+    </svg>
+  );
+}
 
 /**
  * @returns {UIContextValue}
@@ -58,8 +88,8 @@ function Header() {
             <Menu className="h-6 w-6" />
           </button>
 
-          <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gold-primary/20 bg-white/70 text-gold-primary dark:border-dark-border/60 dark:bg-dark-surface/60 dark:text-gold-light">
-            <BookOpenText className="h-5 w-5" />
+          <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gold-primary/20 bg-white/70 text-gold-primary shadow-[0_10px_24px_rgba(120,93,48,0.12)] dark:border-dark-border/60 dark:bg-dark-surface/60 dark:text-gold-light">
+            <BrandMark />
           </span>
           <span className="truncate font-korean text-[13px] font-semibold tracking-[0.01em] text-charcoal-main dark:text-dark-text-primary sm:text-[16px]">
             {TITLE_TEXT}
@@ -106,8 +136,8 @@ function Header() {
               <Menu className="h-6 w-6" />
             </button>
 
-            <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gold-primary/20 bg-white/70 text-gold-primary dark:border-dark-border/60 dark:bg-dark-surface/60 dark:text-gold-light">
-              <BookOpenText className="h-5 w-5" />
+            <span className="flex h-10 w-10 items-center justify-center rounded-full border border-gold-primary/20 bg-white/70 text-gold-primary shadow-[0_10px_24px_rgba(120,93,48,0.12)] dark:border-dark-border/60 dark:bg-dark-surface/60 dark:text-gold-light">
+              <BrandMark />
             </span>
             <span className="truncate font-korean text-[16px] font-semibold tracking-[0.01em] text-charcoal-main dark:text-dark-text-primary">
               {TITLE_TEXT}
