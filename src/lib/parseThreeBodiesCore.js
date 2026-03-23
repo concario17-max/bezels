@@ -74,6 +74,14 @@ function parseParagraphBlock(blockLines) {
 }
 
 /**
+ * @param {string[]} blockLines
+ * @returns {string}
+ */
+function parsePlainParagraphBlock(blockLines) {
+  return normalizeWhitespace(blockLines.join('\n'));
+}
+
+/**
  * @param {string} source
  * @param {string[]} tocEntries
  * @returns {ParsedChapterEntry[]}
@@ -94,11 +102,33 @@ export function parseChapterEntries(source, tocEntries) {
   function flushParagraph() {
     if (!currentChapter || currentParagraphNumber === null) return;
     const { dagli, austin } = parseParagraphBlock(currentParagraphLines);
-    currentChapter.paragraphs.push({
-      number: currentParagraphNumber,
-      dagli,
-      austin,
-    });
+    const plainText = !dagli && !austin ? parsePlainParagraphBlock(currentParagraphLines) : '';
+    const previousParagraph = currentChapter.paragraphs.at(-1);
+
+    if (previousParagraph?.number === currentParagraphNumber) {
+      if (dagli) {
+        previousParagraph.dagli = previousParagraph.dagli
+          ? `${previousParagraph.dagli}\n\n${dagli}`
+          : dagli;
+      } else if (plainText && !previousParagraph.dagli) {
+        previousParagraph.dagli = plainText;
+      }
+
+      if (austin) {
+        previousParagraph.austin = previousParagraph.austin
+          ? `${previousParagraph.austin}\n\n${austin}`
+          : austin;
+      } else if (plainText && previousParagraph.dagli !== plainText && !previousParagraph.austin) {
+        previousParagraph.austin = plainText;
+      }
+    } else {
+      currentChapter.paragraphs.push({
+        number: currentParagraphNumber,
+        dagli: dagli || plainText,
+        austin,
+      });
+    }
+
     currentParagraphNumber = null;
     currentParagraphLines = [];
   }

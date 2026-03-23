@@ -51,6 +51,14 @@ async function runParserTests() {
   assert.equal(chapterEntries[0].paragraphs[0].number, 1);
   assert.equal(chapterEntries[0].paragraphs[0].dagli.startsWith('The Real willed'), true);
   assert.equal(chapterEntries[0].paragraphs[0].austin.startsWith('The Reality wanted'), true);
+  assert.equal(chapterEntries[19].englishTitle, 'THE WISDOM OF MAJESTY IN THE WORD OF JOHN');
+  assert.equal(chapterEntries[19].paragraphs.length, 2);
+  assert.equal(chapterEntries[19].paragraphs[0].dagli.startsWith('This is the Wisdom of firstness'), true);
+  assert.equal(chapterEntries[19].paragraphs[0].austin.startsWith('This is the wisdom of precedence'), true);
+  assert.equal(chapterEntries[23].englishTitle, 'THE WISDOM OF LEADERSHIP IN THE WORD OF AARON');
+  assert.equal(chapterEntries[23].paragraphs.length, 8);
+  assert.equal(chapterEntries[23].paragraphs[0].dagli.startsWith('Know that the existence of Aaron'), true);
+  assert.equal(chapterEntries[23].paragraphs[0].austin.startsWith('Know that the existence of Aaron derived'), true);
   assert.equal(chapterEntries.at(-1)?.englishTitle, 'THE WISDOM OF SINGULARITY IN THE WORD OF MUHAMMAD');
   assert.equal(bookGroup.title, COLLECTION_TITLE);
   assert.equal(bookGroup.isGroup, true);
